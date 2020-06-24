@@ -1,0 +1,204 @@
+@charset "UTF-8";
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+@import url(https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800);
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumBarunGothic@1.0/nanumbarungothicsubset.css);
+
+#top {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+#container {
+	width: 900px;
+	height: auto;
+	margin: 0 auto;
+}
+
+a:link {
+	text-decoration: none;
+	color: black;
+}
+a:hover{
+	text-decoration: none;
+	color: black;
+}
+a:visited{
+	text-decoration: none;
+	color: black;
+}
+
+#result {
+	width: 900px;
+	height: auto;
+	float: left;
+	text-align: center;
+	font-family: 'NanumBarunGothic', sans-serif;
+}
+
+.recruit-contents {
+	border: 2px solid black;
+	border-radius: 2px;
+	margin: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.recruit-title {
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.recruit-details table {
+	text-align: center;
+	width: 900px;
+}
+
+#bot-nav {
+	width: 900px;
+	height: 30px;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	white-space: nowrap;
+}
+
+#bot-nav ul {
+	justify-content: center;
+	white-space: nowrap;
+	list-style: none;
+	margin: 0 auto;
+}
+
+#bot-nav li {
+	float: left;
+	margin-left: 5px;
+}
+
+#sidebar {
+	width: 270px;
+	height: 630px;
+	float: left;
+	text-align: center;
+}
+
+.member {
+	width: 270px;
+	height: 32px;
+	background: gold;
+	font-family: 'NanumSquare', sans-serif;
+	font-size: 17px;
+	display: table;
+}
+
+.member-c {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.member a {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
+
+#notice {
+	height: 250px;
+	border: 1px solid black;
+}
+
+#notice-contents {
+	margin-top: 10px;
+}
+
+#notice-table {
+	text-align: center;
+	margin: 0 auto;
+	font-family: 'NanumSquare', sans-serif;
+	font-size: 18px;
+	table-layout: fixed;
+}
+
+.notice-th {
+	font-size: 22px;
+	background-color: lightgray;
+	height: 60px;
+}
+
+#notice-table td {
+	width: 250px;
+	max-width: 250px;
+	height: 50px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	border-bottom: 1px solid black;
+}
+
+#contents {
+	width: 610px;
+	height: 630px;
+	float: left;
+	margin-left: 5px;
+}
+
+#left_contents {
+	float: left;
+	cursor: pointer;
+}
+
+.left_menus {
+	width: 130px;
+	height: 90px;
+}
+
+#admin {
+	width: 800px;
+	text-align: right;
+	margin: 0 auto;
+}
+
+#right_contents {
+	width: 430px;
+	height: 580px;
+	border: 1px dashed black;
+	float: left;
+	padding: 20px;
+	position: relative;
+}
+
+#jobDiv table {
+	font-size: 22px;
+}
+
+#jobDiv tr {
+	height: 35px;
+}
+
+#cotypeDiv table {
+	font-size: 22px;
+}
+
+#cotypeDiv tr {
+	height: 35px;
+}
+
+#emptypeDiv table {
+	font-size: 22px;
+}
+
+#emptypeDiv tr {
+	height: 35px;
+}
+
+#right_contents_fix {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}
+
+.selected {
+	font-weight: bold;
+}

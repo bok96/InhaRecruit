@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mariadb://localhost:3306/recruit"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="1234"></property>
+	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="pidyuben" />
+		<property name="password" value="dlsgkflzmfnxm5!" />
+		<property name="javaMailProperties">
+		<props>
+			<prop key="mail.smtp.auth">true</prop>
+			<prop key="mail.smtp.starttls.enable">true</prop>
+		</props>
+    	</property>
+	</bean>
+	
+	<!-- Service -->
+	<bean id="memberInsertService" class="com.inhatc.recruit.svc.MemberService"/>
+	<bean id="searchRecruitService" class="com.inhatc.recruit.svc.SearchRecruitService"/>
+	
+	<!-- dao -->
+	<bean id="memberDAO" class="com.inhatc.recruit.dao.MemberDAO">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+	<bean id="recruitDAO" class="com.inhatc.recruit.dao.RecruitDAO">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+	<bean id="noticeDAO" class="com.inhatc.recruit.dao.NoticeDAO">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+</beans>
