@@ -33,8 +33,13 @@ public class LoginController {
 		
 		Member member = memberService.searchMemberByEmail(email);
 		
+		if(member == null) {
+			session.setAttribute("isLogin", false);
+			return "login";
+		}
 		if(email.equals(member.getEmail()) && pw.equals(member.getPw())) {
 			session.setAttribute("member", member);
+			session.removeAttribute("isLogin");
 			return "redirect:/";
 		} else {
 			session.setAttribute("isLogin", false);

@@ -25,17 +25,6 @@ public class RecruitDAO {
 		this.template = new JdbcTemplate(ds);
 	}
 	
-	/*
-	public int insertMember(Member member) {
-		
-		int insertCount = 0;
-		
-		String sql = "INSERT INTO MEMBER(EMAIL, PW, NAME, BIRTH, HP) VALUES(?, ?, ?, ?, ?)";
-		insertCount = template.update(sql, member.getEmail(), member.getPw(), member.getName(), member.getBirth(), member.getHp());
-		
-		return insertCount;
-	}*/
-	
 	public List<RecruitBoard> searchRecruit(final List<Integer> jobs, final List<Integer> regions,
 											final List<Integer> cotypes, final List<Integer> emptypes,
 											int page) {
@@ -107,7 +96,7 @@ public class RecruitDAO {
 		
 		sql += "ORDER BY NO DESC LIMIT " + (page-1)*10 + ", 10";
 		
-		System.out.println("완성된 문장 : " + sql);
+		// System.out.println("완성된 문장 : " + sql);
 		
 		recruitBoards = template.query(sql, new PreparedStatementSetter() {
 			@Override
