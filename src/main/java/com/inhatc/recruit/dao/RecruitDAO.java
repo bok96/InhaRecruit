@@ -3,6 +3,9 @@ package com.inhatc.recruit.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -117,14 +120,12 @@ public class RecruitDAO {
 				recruitBoard.setEmptype(rs.getInt("emptype"));
 				recruitBoard.setSalary(rs.getInt("salary"));
 				recruitBoard.setLink(rs.getString("link"));
-				recruitBoard.setDeadline(rs.getString("d_date"));
+				recruitBoard.setDeadline(rs.getString("d_date").split(" ")[0]); // 시분초 단위 절삭
 				
 				return recruitBoard;
 			}
 			
 		});
-		
-		System.out.println(recruitBoards.size());
 		
 		return recruitBoards;
 	}
@@ -223,5 +224,30 @@ public class RecruitDAO {
 		});
 		
 		return recruitBoards.size();
+	}
+	
+	public int chartData(String startDate, String endDate, String first, int second) {
+		int result = 0;
+		//System.out.println(startDate + "/" + endDate + "/" + first + "/" + second);
+		String sql = null;
+		sql = "SELECT COUNT(*) FROM RECRUIT_BOARD WHERE (WRITE_DATE BETWEEN ? AND ?) AND " + first + " = ?";
+		//System.out.println("차트 SQL : " + sql);
+		if(first.equals("region")) {
+			if(second == 0)
+				sql = "SELECT COUNT(*) FROM RECRUIT_BOARD WHERE (WRITE_DATE BETWEEN ? AND ?) AND " + first + " < 100";
+			else if(second == 100)
+				sql = "SELECT COUNT(*) FROM RECRUIT_BOARD WHERE (WRITE_DATE BETWEEN ? AND ?) AND " + first + " LIKE '1__'";
+			else if(second == 200)
+				sql = "SELECT COUNT(*) FROM RECRUIT_BOARD WHERE (WRITE_DATE BETWEEN ? AND ?) AND " + first + " LIKE '2__'";
+		}
+		
+		if(first.equals("region")) {
+			result = template.queryForObject(sql, new Object[] {startDate, endDate}, Integer.class);
+		} else {
+			result = template.queryForObject(sql, new Object[] {startDate, endDate, second}, Integer.class);
+		}
+		System.out.println(result);
+		
+		return result;
 	}
 }
